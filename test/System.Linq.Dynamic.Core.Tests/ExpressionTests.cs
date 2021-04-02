@@ -296,7 +296,7 @@ namespace System.Linq.Dynamic.Core.Tests
             }.AsQueryable();
 
             // Act
-            var result = qry.Select("new (Tuple(it) as i)");
+            var result = qry.Select("new (Tuple<int,int>(it) as i)");
 
             // Assert
             result.Should().NotBeNull();
