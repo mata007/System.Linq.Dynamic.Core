@@ -26,8 +26,8 @@ namespace System.Linq.Dynamic.Core.Tokenizer
             { "GreaterThan", TokenId.GreaterThan },
             { "ge", TokenId.GreaterThanEqual },
             { "GreaterThanEqual", TokenId.GreaterThanEqual },
-            { "and", TokenId.DoubleAmphersand },
-            { "AndAlso", TokenId.DoubleAmphersand },
+            { "and", TokenId.DoubleAmpersand },
+            { "AndAlso", TokenId.DoubleAmpersand },
             { "or", TokenId.DoubleBar },
             { "OrElse", TokenId.DoubleBar },
             { "not", TokenId.Exclamation },
@@ -115,11 +115,11 @@ namespace System.Linq.Dynamic.Core.Tokenizer
                     if (_ch == '&')
                     {
                         NextChar();
-                        tokenId = TokenId.DoubleAmphersand;
+                        tokenId = TokenId.DoubleAmpersand;
                     }
                     else
                     {
-                        tokenId = TokenId.Amphersand;
+                        tokenId = TokenId.Ampersand;
                     }
                     break;
 

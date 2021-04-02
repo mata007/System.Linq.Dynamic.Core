@@ -286,7 +286,7 @@ namespace System.Linq.Dynamic.Core.Tests
             Assert.Equal(expectedResult.Count(), result.Count());
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping for now (#491)")]
         public void ExpressionTests_Cast_To_Tuple()
         {
             // Arrange

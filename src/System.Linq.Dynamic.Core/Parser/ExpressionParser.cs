@@ -279,7 +279,7 @@ namespace System.Linq.Dynamic.Core.Parser
         Expression ParseAndOperator()
         {
             Expression left = ParseIn();
-            while (_textParser.CurrentToken.Id == TokenId.DoubleAmphersand)
+            while (_textParser.CurrentToken.Id == TokenId.DoubleAmpersand)
             {
                 Token op = _textParser.CurrentToken;
                 _textParser.NextToken();
@@ -377,7 +377,7 @@ namespace System.Linq.Dynamic.Core.Parser
         Expression ParseLogicalAndOrOperator()
         {
             Expression left = ParseComparisonOperator();
-            while (_textParser.CurrentToken.Id == TokenId.Amphersand || _textParser.CurrentToken.Id == TokenId.Bar)
+            while (_textParser.CurrentToken.Id == TokenId.Ampersand || _textParser.CurrentToken.Id == TokenId.Bar)
             {
                 Token op = _textParser.CurrentToken;
                 _textParser.NextToken();
@@ -395,7 +395,7 @@ namespace System.Linq.Dynamic.Core.Parser
 
                 switch (op.Id)
                 {
-                    case TokenId.Amphersand:
+                    case TokenId.Ampersand:
                         int parseValue;
                         if (left.Type == typeof(string) && left.NodeType == ExpressionType.Constant && int.TryParse((string)((ConstantExpression)left).Value, out parseValue) && TypeHelper.IsNumericType(right.Type))
                         {
