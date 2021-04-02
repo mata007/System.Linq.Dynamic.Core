@@ -1,4 +1,5 @@
 ﻿#if NET35
+// ReSharper disable once CheckNamespace
 namespace System
 {
     public class Tuple<T1, T2>

@@ -975,8 +975,7 @@ namespace System.Linq.Dynamic.Core.Parser
                 // Prioritize property or field over the type
                 !(value is Type && _it != null && FindPropertyOrField(_it.Type, _textParser.CurrentToken.Text, false) != null))
             {
-                Type typeValue = value as Type;
-                if (typeValue != null)
+                if (value is Type typeValue)
                 {
                     return ParseTypeAccess(typeValue);
                 }

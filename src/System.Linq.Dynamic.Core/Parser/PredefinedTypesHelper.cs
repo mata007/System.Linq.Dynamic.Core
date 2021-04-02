@@ -49,7 +49,7 @@ namespace System.Linq.Dynamic.Core.Parser
 
         static PredefinedTypesHelper()
         {
-#if !(NET35 || SILVERLIGHT || NETFX_CORE || WINDOWS_APP ||  UAP10_0 || NETSTANDARD)
+#if !(NET35 || SILVERLIGHT || NETFX_CORE || WINDOWS_APP || UAP10_0 || NETSTANDARD)
             //System.Data.Entity is always here, so overwrite short name of it with EntityFramework if EntityFramework is found.
             //EF5(or 4.x??), System.Data.Objects.DataClasses.EdmFunctionAttribute
             //There is also an System.Data.Entity, Version=3.5.0.0, but no Functions.
@@ -67,6 +67,10 @@ namespace System.Linq.Dynamic.Core.Parser
 
 #if NETSTANDARD2_0
             TryAdd($"Microsoft.EntityFrameworkCore.DynamicLinq.DynamicFunctions, Microsoft.EntityFrameworkCore.DynamicLinq, Version={Version}, Culture=neutral, PublicKeyToken=974e7e1b462f3693", 3);
+#endif
+
+#if !NET35
+            PredefinedTypes.Add(typeof(Tuple<int,int>), 0);
 #endif
         }
 

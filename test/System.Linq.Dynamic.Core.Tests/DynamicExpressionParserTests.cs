@@ -240,11 +240,11 @@ namespace System.Linq.Dynamic.Core.Tests
                     return _customTypes;
                 }
 
-                _customTypes =
-                    new HashSet<Type>(
-                        FindTypesMarkedWithDynamicLinqTypeAttribute(new[] { GetType().GetTypeInfo().Assembly }));
-                _customTypes.Add(typeof(CustomClassWithStaticMethod));
-                _customTypes.Add(typeof(StaticHelper));
+                _customTypes = new HashSet<Type>(FindTypesMarkedWithDynamicLinqTypeAttribute(new[] { GetType().GetTypeInfo().Assembly }))
+                {
+                    typeof(CustomClassWithStaticMethod), typeof(StaticHelper)
+                };
+
                 return _customTypes;
             }
 
@@ -1070,7 +1070,7 @@ namespace System.Linq.Dynamic.Core.Tests
 
             // Assert
             Assert.Equal(anotherId, result);
-        }        
+        }
 
         [Theory]
         [InlineData("c => c.Age == 8", "c => (c.Age == 8)")]
@@ -1239,7 +1239,7 @@ namespace System.Linq.Dynamic.Core.Tests
 
             var @delegate = expression.Compile();
 
-            var result = (bool) @delegate.DynamicInvoke("This is a test  ");
+            var result = (bool)@delegate.DynamicInvoke("This is a test  ");
 
             // Assert
             result.Should().BeTrue();

@@ -287,6 +287,22 @@ namespace System.Linq.Dynamic.Core.Tests
         }
 
         [Fact]
+        public void ExpressionTests_Cast_To_Tuple()
+        {
+            // Arrange
+            var qry = new object[]
+            {
+                Tuple.Create<int, int>(1, 2)
+            }.AsQueryable();
+
+            // Act
+            var result = qry.Select("new (Tuple(it) as i)");
+
+            // Assert
+            result.Should().NotBeNull();
+        }
+
+        [Fact]
         public void ExpressionTests_Conditional_With_Automatic_Cast_NullableInt()
         {
             // Arrange
