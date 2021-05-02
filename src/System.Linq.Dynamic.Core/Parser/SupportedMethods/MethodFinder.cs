@@ -58,7 +58,7 @@ namespace System.Linq.Dynamic.Core.Parser.SupportedMethods
                     var argsList = args.ToList();
                     argsList.Insert(0, instance);
                     var extensionMethodArgs = argsList.ToArray();
-                    int count = FindBestMethod(methods.Cast<MethodBase>(), ref extensionMethodArgs, out method);
+                    nt count = FindBestMethod(methods.Cast<MethodBase>().Where((m) => StringComparer.OrdinalIgnoreCase.Equals(m.Name, methodName)), ref extensionMethodArgs, out method);
                     if (count != 0)
                     {
                         instance = null;
